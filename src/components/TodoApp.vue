@@ -17,8 +17,8 @@
         />
         <span>Символов осталось: {{ availableTaskTitleLength }}</span>
       </div>
-      <todo-list :tasks="undoneTasks" type="new" />
-      <todo-list :tasks="doneTasks" type="done" />
+      <todo-list :tasks="undoneTasks" type="Новые" />
+      <todo-list :tasks="doneTasks" type="Выполненные" />
     </div>
   </div>
 </template>
@@ -90,10 +90,11 @@ export default {
     },
 
     changeTask(_task) {
-      if (!_task.isDone) {
-        _task.isDone = true;
-      } else {
+      if (_task.isDone === true) {
         this._delTask(_task);
+      }
+      if (_task.isDone === false) {
+        _task.isDone = true;
       }
     },
 

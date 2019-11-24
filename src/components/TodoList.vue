@@ -1,5 +1,5 @@
 <template>
-  <div v-show="tasks.length > 0">
+  <div>
     <h2 v-text="yourTasksTitle"></h2>
     <div class="list-group" v-show="tasks.length !== 0">
       <todo-item
@@ -36,16 +36,13 @@ export default {
 
   computed: {
     yourTasksTitle() {
-      if (this.type === "new") {
-        if (this.tasks.length === 0) {
-          return "Новых задач нет";
+      if (this.tasks.length === 0) {
+        if (this.type === "Выполненные") {
+          return "";
         }
-        return "Ваши задачи";
+        return "Новых задач нет";
       }
-      if (this.type === "done") {
-        return "Выполненные задачи";
-      }
-      return "";
+      return this.type + " задачи";
     }
   }
 };
